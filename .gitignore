@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data & malware samples — NEVER commit real samples
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+*.exe
+*.dll
+*.bin
+samples/
+
+# Models (large binaries — track via releases or DVC/LFS instead)
+models/*.pkl
+models/*.joblib
+models/*.h5
+models/*.onnx
+
+# Sandbox / VM artifacts
+dynamic_sandbox/reports/
+*.vmdk
+*.ova
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Env secrets
+.env
