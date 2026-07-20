@@ -17,7 +17,8 @@
 
 | Day | File | What it does |
 |---|---|---|
-| — | *(empty — Day 1 creates the first entries)* | |
+| 1 | .gitignore | ignores venv, raw samples, models from git tracking |
+| 2 | static_features/dos_header_manual.py | reads raw bytes, extracts MZ signature + e_lfanew offset |
 
 ---
 
