@@ -19,6 +19,7 @@
 |---|---|---|
 | 1 | .gitignore | ignores venv, raw samples, models from git tracking |
 | 2 | static_features/dos_header_manual.py | reads raw bytes, extracts MZ signature + e_lfanew offset |
+| 3 | static_features/file_header_manual.py | reads NT File Header — machine type, section count, timestamp, characteristics |
 
 ---
 
