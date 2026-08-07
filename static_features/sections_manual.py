@@ -1,7 +1,8 @@
 import struct, sys
 from dos_header_manual import read_dos_header
 from file_header_manual import read_file_header
-from optional_header_manual import read_optional_header
+from static_features.dos_header_manual import read_dos_header
+from static_features.optional_header_manual import read_optional_header
 
 SECTION_HEADER_SIZE = 40  # fixed by spec, no exceptions
 
