@@ -1,5 +1,5 @@
 import struct, sys
-from dos_header_manual import read_dos_header
+from static_features.dos_header_manual import read_dos_header
 
 def read_optional_header(file_path):
     with open(file_path, 'rb') as f:
