@@ -105,3 +105,27 @@ asm code:
         nop
         leave
         ret
+
+code 5:
+int calculate(int a, int b) {
+    int x = a + b;
+    int y = x * 2;
+    return y - 3;
+}
+asm code:
+"calculate":
+        push    rbp
+        mov     rbp, rsp
+        mov     DWORD PTR [rbp-20], edi
+        mov     DWORD PTR [rbp-24], esi
+        mov     edx, DWORD PTR [rbp-20]
+        mov     eax, DWORD PTR [rbp-24]
+        add     eax, edx
+        mov     DWORD PTR [rbp-4], eax
+        mov     eax, DWORD PTR [rbp-4]
+        add     eax, eax
+        mov     DWORD PTR [rbp-8], eax
+        mov     eax, DWORD PTR [rbp-8]
+        sub     eax, 3
+        pop     rbp
+        ret
