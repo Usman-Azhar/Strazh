@@ -1,0 +1,163 @@
+{
+  "info": {
+    "id": 1,
+    "started": "2024-01-15 10:30:00",
+    "ended": "2024-01-15 10:32:15",
+    "duration": 135,
+    "machine": {
+      "name": "Strazh-Win10",
+      "label": "Strazh-Win10",
+      "manager": "VirtualBox"
+    }
+  },
+  "target": {
+    "file": {
+      "name": "notepad.exe",
+      "size": 193536,
+      "type": "PE32+ executable (GUI) x86-64",
+      "sha256": "f1d62648ef915d85cb4fc21fcb02a6467a68f0a35e22c627d9e7eeabc1536f3c"
+    }
+  },
+  "behavior": {
+    "processes": [
+      {
+        "pid": 2184,
+        "ppid": 1044,
+        "process_name": "notepad.exe",
+        "module_path": "C:\\Users\\user\\Desktop\\notepad.exe",
+        "first_seen": "2024-01-15 10:30:01.123",
+        "calls": [
+          {
+            "timestamp": "2024-01-15 10:30:01.200",
+            "category": "system",
+            "api": "LdrLoadDll",
+            "arguments": {
+              "module_name": "kernel32.dll"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 10:30:01.210",
+            "category": "system",
+            "api": "LdrLoadDll",
+            "arguments": {
+              "module_name": "user32.dll"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 10:30:01.250",
+            "category": "system",
+            "api": "LdrLoadDll",
+            "arguments": {
+              "module_name": "gdi32.dll"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 10:30:01.300",
+            "category": "registry",
+            "api": "RegOpenKeyExW",
+            "arguments": {
+              "regkey": "HKEY_CURRENT_USER\\Software\\Microsoft\\Notepad"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 10:30:01.310",
+            "category": "registry",
+            "api": "RegQueryValueExW",
+            "arguments": {
+              "regkey": "HKEY_CURRENT_USER\\Software\\Microsoft\\Notepad",
+              "value": "iWindowPosX"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 10:30:01.320",
+            "category": "registry",
+            "api": "RegQueryValueExW",
+            "arguments": {
+              "regkey": "HKEY_CURRENT_USER\\Software\\Microsoft\\Notepad",
+              "value": "iWindowPosY"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 10:30:01.400",
+            "category": "file",
+            "api": "NtCreateFile",
+            "arguments": {
+              "filepath": "C:\\Users\\user\\Documents\\notes.txt"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 10:30:01.500",
+            "category": "file",
+            "api": "NtReadFile",
+            "arguments": {
+              "filepath": "C:\\Users\\user\\Documents\\notes.txt"
+            },
+            "return_value": "0x00000000",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 10:30:02.000",
+            "category": "ui",
+            "api": "CreateWindowExW",
+            "arguments": {
+              "class": "Notepad",
+              "window_name": "notes.txt - Notepad"
+            },
+            "return_value": "0x000a0b2c",
+            "status": true
+          },
+          {
+            "timestamp": "2024-01-15 10:30:02.100",
+            "category": "ui",
+            "api": "ShowWindow",
+            "arguments": {
+              "window_handle": "0x000a0b2c"
+            },
+            "return_value": "1",
+            "status": true
+          }
+        ]
+      }
+    ],
+    "processtree": [
+      {
+        "pid": 2184,
+        "name": "notepad.exe",
+        "children": []
+      }
+    ],
+    "summary": {
+      "files": ["C:\\Users\\user\\Documents\\notes.txt"],
+      "read_files": ["C:\\Users\\user\\Documents\\notes.txt"],
+      "write_files": [],
+      "delete_files": [],
+      "registry_read": [
+        "HKEY_CURRENT_USER\\Software\\Microsoft\\Notepad"
+      ],
+      "registry_write": [],
+      "mutexes": ["Local\\NotepadMutex"]
+    }
+  },
+  "network": {
+    "dns": [],
+    "http": [],
+    "tcp": [],
+    "udp": []
+  },
+  "dropped": [],
+  "signatures": []
+}
