@@ -1,4 +1,9 @@
 venv/
 data/raw/
-models/
+models/*.pt
+models/*.pth
+models/*.bin
+models/*.pkl
+models/*.json
+models/__pycache__/
 __pycache__/
